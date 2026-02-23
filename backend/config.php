@@ -17,12 +17,21 @@ $options = [
 
 try {
     if (!extension_loaded('pdo_mysql')) {
-        die(json_encode(["error" => "Extension pdo_mysql non disponible."]));
+        echo json_encode(["status" => "error", "message" => "Extension pdo_mysql non disponible."]);
+        exit;
     }
     $pdo = new \PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
     http_response_code(500);
-    echo json_encode(["error" => "Erreur de connexion DB : " . $e->getMessage()]);
+    echo json_encode([
+        "status" => "error", 
+        "message" => "Erreur de connexion DB", 
+        "details" => $e->getMessage(),
+        "host" => $host,
+        "port" => $port,
+        "db" => $db,
+        "user" => $user
+    ]);
     exit;
 }
 ?>
