@@ -6,12 +6,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // If eslint/typescript blocks cause issues with this specific Next version, 
+  // we'll stick to the core required options for now.
 };
 
 export default nextConfig;
