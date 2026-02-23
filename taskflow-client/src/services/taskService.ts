@@ -1,7 +1,8 @@
 import { Task, CreateTaskData, UpdateTaskData } from '../types/task';
 
-const API_URL = 'http://127.0.0.1:8000/api/tasks';
-const AUTH_URL = 'http://127.0.0.1:8000/api/auth.php';
+const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+const API_URL = `${BASE}/api/tasks`;
+const AUTH_URL = `${BASE}/api/auth.php`;
 
 export const taskService = {
     async getTasks(search = ''): Promise<Task[]> {
