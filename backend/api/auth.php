@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-file_put_contents("C:/Users/Jordan/Desktop/Taskflow/backend/hit.log", "[" . date('Y-m-d H:i:s') . "] " . $_SERVER['REQUEST_METHOD'] . " AUTH " . ($_GET['action'] ?? 'none') . "\n", FILE_APPEND);
+file_put_contents("../hit.log", "[" . date('Y-m-d H:i:s') . "] " . $_SERVER['REQUEST_METHOD'] . " AUTH " . ($_GET['action'] ?? 'none') . "\n", FILE_APPEND);
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -15,7 +15,7 @@ require_once '../config.php';
 
 if ($method === 'POST') {
     $raw_input = file_get_contents("php://input");
-    file_put_contents("C:/Users/Jordan/Desktop/Taskflow/backend/api/debug_auth.log", "[" . date('Y-m-d H:i:s') . "] AUTH data: " . $raw_input . "\n", FILE_APPEND);
+    file_put_contents("debug_auth.log", "[" . date('Y-m-d H:i:s') . "] AUTH data: " . $raw_input . "\n", FILE_APPEND);
     $data = json_decode($raw_input, true);
     $action = $_GET['action'] ?? '';
 

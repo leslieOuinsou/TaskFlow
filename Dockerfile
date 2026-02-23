@@ -21,10 +21,16 @@ WORKDIR /var/www/html
 # Copy the static frontend build
 COPY --from=builder /app/frontend/out /var/www/html
 
-# Copy the backend files to /api
-COPY backend/ /var/www/html/api/
+# Copy the backend files correctly
+# config.php goes to the root so scripts in /api can find it via ../config.php
+COPY backend/config.php /var/www/html/
+# The contents of backend/api/ go directly into /var/www/html/api/
+COPY backend/api/ /var/www/html/api/
 
-# Update permissions
+# Ensure uploads directory exists and is writable
+RUN mkdir -p /var/www/html/uploads && chown -R www-data:www-data /var/www/html/uploads
+
+# Update permissions for all files
 RUN chown -R www-data:www-data /var/www/html
 
 # Copy and prepare the startup script
