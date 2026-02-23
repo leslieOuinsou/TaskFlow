@@ -6,7 +6,7 @@ import { CreateTaskData, Priority } from '@/types/task';
 interface TaskFormModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSubmit: (data: CreateTaskData) => void;
+    onSubmit: (data: Omit<CreateTaskData, 'user_id'>) => void;
 }
 
 export default function TaskFormModal({ isOpen, onClose, onSubmit }: TaskFormModalProps) {
