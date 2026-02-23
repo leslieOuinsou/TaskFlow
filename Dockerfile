@@ -27,7 +27,12 @@ COPY backend/ /var/www/html/api/
 # Update permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port 80 (Railway will map this)
+# Expose port (Railway will map the PORT env var)
 EXPOSE 80
+
+# Configure Apache for Railway and fix MPM conflict
+RUN a2dismod mpm_event && a2enmod mpm_prefork
+RUN sed -i 's/Listen 80/Listen ${PORT}/g' /etc/apache2/ports.conf
+RUN sed -i 's/:80/:${PORT}/g' /etc/apache2/sites-available/000-default.conf
 
 # The default Apache entrypoint will start the server
