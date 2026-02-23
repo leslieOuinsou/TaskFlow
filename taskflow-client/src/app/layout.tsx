@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "Application professionnelle de gestion de demandes internes.",
 };
 
-import Sidebar from "@/components/Sidebar";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 export default function RootLayout({
   children,
@@ -22,10 +22,9 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body className={`${openSans.variable} font-sans antialiased text-brand-text`}>
-        <Sidebar />
-        <main className="min-h-screen bg-brand-bg lg:ml-72 pt-14 lg:pt-0">
+        <ClientLayoutWrapper>
           {children}
-        </main>
+        </ClientLayoutWrapper>
       </body>
     </html>
   );
