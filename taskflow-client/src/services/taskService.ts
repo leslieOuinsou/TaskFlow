@@ -1,6 +1,14 @@
 import { Task, CreateTaskData, UpdateTaskData } from '../types/task';
 
-const BASE = ''; // Relative path for unified deployment
+const getBaseUrl = () => {
+    if (process.env.NEXT_PUBLIC_API_URL) return process.env.NEXT_PUBLIC_API_URL;
+    if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
+        return 'http://localhost:8000';
+    }
+    return '';
+};
+
+const BASE = getBaseUrl();
 const API_URL = `${BASE}/api/tasks`;
 const AUTH_URL = `${BASE}/api/auth.php`;
 
@@ -95,7 +103,7 @@ export const taskService = {
     },
 
     getAttachmentUrl(filePath: string): string {
-        return `http://127.0.0.1:8000/uploads/${filePath}`;
+        return `${BASE}/uploads/${filePath}`;
     },
 
     getExportUrl(taskId: number): string {

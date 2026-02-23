@@ -62,7 +62,7 @@ export default function TaskTable({ tasks }: TaskTableProps) {
                         </div>
                         <div className="flex gap-2">
                             <Link
-                                href={`/tasks/${task.id}`}
+                                href={`/tasks/view?id=${task.id}`}
                                 className="flex-1 text-center py-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-xl transition-all font-black text-[10px] uppercase tracking-widest border border-primary/20"
                             >
                                 Détails
@@ -126,7 +126,7 @@ export default function TaskTable({ tasks }: TaskTableProps) {
                                 <td className="px-6 py-4 text-right">
                                     <div className="flex items-center justify-end gap-2">
                                         <Link
-                                            href={`/tasks/${task.id}`}
+                                            href={`/tasks/view?id=${task.id}`}
                                             className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-xl transition-all font-black text-[10px] uppercase tracking-widest border border-primary/20 shadow-sm"
                                         >
                                             Détails
