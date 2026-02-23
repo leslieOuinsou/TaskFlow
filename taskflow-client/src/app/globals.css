@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #1976D2;
+  --color-primary-variant: #2196F3;
+  --color-primary-hover: #155FA8;
+  --color-bg: #FFFFFF;
+  --color-surface: #F7F8FA;
+  --color-border: #E6E9EE;
+  --color-text: #1F2D3D;
+  --color-muted: #8C93A2;
+  --status-pending: #F1C40F;
+  --status-in-progress: #1976D2;
+  --status-complete: #2E7D32;
+  --color-success: #2E7D32;
+  --color-warning: #F1C40F;
+  --color-danger: #D32F2F;
+  --color-info: #0288D1;
+  --elevation-1: 0 1px 3px 0 rgba(31, 45, 61, 0.06);
+
+  /* Mapping for standard variables */
+  --background: var(--color-bg);
+  --foreground: var(--color-text);
+  --primary: var(--color-primary);
+  --primary-hover: var(--color-primary-hover);
+  --border: var(--color-border);
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-variant: var(--color-primary-variant);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-brand-bg: var(--color-bg);
+  --color-brand-surface: var(--color-surface);
+  --color-brand-border: var(--color-border);
+  --color-brand-text: var(--color-text);
+  --color-brand-muted: var(--color-muted);
+
+  --color-status-pending: var(--status-pending);
+  --color-status-in-progress: var(--status-in-progress);
+  --color-status-complete: var(--status-complete);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  --color-info: var(--color-info);
+
+  --shadow-elevation-1: var(--elevation-1);
+  --font-sans: var(--font-open-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
