@@ -5,10 +5,18 @@ try {
     // Create Users table
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
+        full_name VARCHAR(100) DEFAULT '',
+        email VARCHAR(100) UNIQUE NOT NULL,
         username VARCHAR(50) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
+        service VARCHAR(50) DEFAULT '',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )");
+
+    // Ensure missing columns exist (for existing tables)
+    $pdo->exec("ALTER TABLE users ADD COLUMN IF NOT EXISTS full_name VARCHAR(100) DEFAULT '' AFTER id");
+    $pdo->exec("ALTER TABLE users ADD COLUMN IF NOT EXISTS email VARCHAR(100) UNIQUE NOT NULL AFTER full_name");
+    $pdo->exec("ALTER TABLE users ADD COLUMN IF NOT EXISTS service VARCHAR(50) DEFAULT '' AFTER password");
 
     // Ensure user_id exists in tasks
     $pdo->exec("ALTER TABLE tasks ADD COLUMN IF NOT EXISTS user_id INT DEFAULT NULL AFTER id");

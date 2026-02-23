@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-file_put_contents("../../hit.log", "[" . date('Y-m-d H:i:s') . "] " . $_SERVER['REQUEST_METHOD'] . " " . $_SERVER['REQUEST_URI'] . "\n", FILE_APPEND);
+// file_put_contents("../../hit.log", ...); // Disabled for Railway stability
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
@@ -37,7 +37,7 @@ if ($method === 'GET') {
     }
 } elseif ($method === 'POST') {
     $raw_input = file_get_contents("php://input");
-    file_put_contents("debug.log", "[" . date('Y-m-d H:i:s') . "] POST data: " . $raw_input . "\n", FILE_APPEND);
+    // file_put_contents("debug.log", ...); // Disabled for Railway stability
     $data = json_decode($raw_input, true);
     
     if (!isset($data['title']) || empty($data['title'])) {
