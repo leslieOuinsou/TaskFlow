@@ -1,6 +1,6 @@
 import { Task, CreateTaskData, UpdateTaskData } from '../types/task';
 
-const BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
+const BASE = ''; // Relative path for unified deployment
 const API_URL = `${BASE}/api/tasks`;
 const AUTH_URL = `${BASE}/api/auth.php`;
 
