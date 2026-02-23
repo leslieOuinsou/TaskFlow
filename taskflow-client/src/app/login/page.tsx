@@ -92,12 +92,13 @@ export default function LoginPage() {
                                     type="password"
                                     required
                                     minLength={12}
+                                    autoComplete="current-password"
                                     placeholder="••••••••••••"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     className={`w-full pl-11 pr-4 py-3 bg-brand-surface border rounded-xl text-sm focus:ring-2 focus:ring-primary outline-none transition-all placeholder:text-brand-muted font-medium text-brand-text ${password.length > 0 && password.length < 12
-                                            ? 'border-danger focus:ring-danger'
-                                            : 'border-brand-border'
+                                        ? 'border-danger focus:ring-danger'
+                                        : 'border-brand-border'
                                         }`}
                                 />
                             </div>
