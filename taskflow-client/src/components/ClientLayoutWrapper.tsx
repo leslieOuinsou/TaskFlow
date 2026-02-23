@@ -9,7 +9,7 @@ export default function ClientLayoutWrapper({
     children: React.ReactNode;
 }) {
     const pathname = usePathname();
-    const isAuthPage = pathname === '/login' || pathname === '/register';
+    const isAuthPage = pathname?.startsWith('/login') || pathname?.startsWith('/register');
 
     return (
         <>

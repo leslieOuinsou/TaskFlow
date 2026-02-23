@@ -132,7 +132,7 @@ export default function Sidebar() {
         router.push('/login');
     };
 
-    const isAuthPage = pathname === '/login' || pathname === '/register';
+    const isAuthPage = pathname?.startsWith('/login') || pathname?.startsWith('/register');
     if (isAuthPage) return null;
 
     const timeAgo = (dateStr: string) => {
@@ -175,8 +175,8 @@ export default function Sidebar() {
                             key={link.href}
                             href={link.href}
                             className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all ${isActive
-                                    ? 'bg-primary/10 text-primary'
-                                    : 'text-brand-muted hover:text-brand-text hover:bg-brand-surface'
+                                ? 'bg-primary/10 text-primary'
+                                : 'text-brand-muted hover:text-brand-text hover:bg-brand-surface'
                                 }`}
                         >
                             {link.icon}
