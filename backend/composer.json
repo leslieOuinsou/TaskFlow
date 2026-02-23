@@ -1,0 +1,11 @@
+{
+    "name": "taskflow/backend",
+    "description": "TaskFlow PHP Backend API",
+    "type": "project",
+    "require": {
+        "php": ">=8.1"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
